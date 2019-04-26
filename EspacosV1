@@ -1,0 +1,51 @@
+%codigo desenvolvido por Iaslan Nascimento
+% Versão 1 do contador de compartimentos da imagem
+%Nessa versão utiliza um contador para as áreas de espaço como se fosse apenas uma 
+
+pkg load image
+clear all 
+close all 
+
+%ler todas as imagens 
+%[FileName,patchName] = uigetfile('*.jpg');
+%im = imread(strcat(PathName,FileName);
+
+im = imread('1.jpg');
+
+
+#fazendo a modificação com a imagem cinza 
+im2 = rgb2gray(im);
+figure(1),imshow(im2);
+for i=1:size(im2,1)
+  for j=1:size(im2,2)
+    
+    if im2(i,j) >15 && im2(i,j)<35
+          im2(i,j) = 255;
+    endif
+  endfor
+endfor
+
+#colocando na imagem colorida
+for i=1:size(im2,1)
+  for j=1:size(im2,2)
+    
+    if im2(i,j) ==255
+          im(i,j,:) =255;
+    endif
+  endfor
+endfor
+#vamos para um teste agora vamos contar todos os pixels brancos para incluir 
+#os buracos 
+c = 0;
+for i=1:size(im2,1)
+  for j=1:size(im2,2)
+    
+    if im2(i,j) ==255
+         c=c+1;
+    endif
+  endfor
+endfor
+
+c
+figure(2),imshow(im)
+#imwrite(im,"Marrom0100-branco.png")
