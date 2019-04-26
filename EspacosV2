@@ -1,0 +1,25 @@
+%codigo desenvolvido por Iaslan Nascimento
+% Versão 2 do contador de compartimentos da imagem
+%Nessa versão Eu procuro contabilizar os espaços  
+
+pkg load image
+clear all 
+close all 
+
+
+im = imread('1.jpg');
+
+
+#fazendo a modificação com a imagem cinza 
+im2 = rgb2gray(im);
+figure(1),imshow(im2);
+for i=1:size(im2,1)
+  for j=1:size(im2,2)
+    
+    if im2(i,j) >15 && im2(i,j)<35
+          im2(i,j) = 255;
+    endif
+  endfor
+endfor
+
+[l, num] = bwlabel(im2)
